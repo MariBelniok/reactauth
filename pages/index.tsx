@@ -1,6 +1,4 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
 import { FormEvent, useContext, useState } from 'react'
 import { AuthContext, SignInCredentials } from '../contexts/AuthContext'
 import styles from '../styles/Home.module.css'
