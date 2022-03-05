@@ -1,5 +1,9 @@
 import axios from 'axios';
+import { parseCookies } from 'nookies';
 
-export const api = axios.create({
-    baseURL: 'http://localhost:3333'
-});
+const cookies = parseCookies();
+
+export const api = axios.create();
+
+api.defaults.baseURL = 'http://localhost:3333',
+api.defaults.headers.common['Authorization'] = `Baerer ${cookies['nextauth.token']}`;
