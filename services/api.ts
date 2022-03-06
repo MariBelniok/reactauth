@@ -1,5 +1,6 @@
 import axios, { Axios, AxiosError } from 'axios';
 import { parseCookies, setCookie } from 'nookies';
+import { signOut } from '../contexts/AuthContext';
 
 let cookies = parseCookies();
 let isRefreshing = false;
@@ -68,7 +69,9 @@ api.interceptors.response.use(response => {
                 })
             })
         } else {
-
+            signOut();
         }
     }
+
+    return Promise.reject(error);
 })
