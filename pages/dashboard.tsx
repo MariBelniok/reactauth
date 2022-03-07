@@ -9,7 +9,7 @@ import { AuthTokenError } from "../services/errors/AuthTokenError";
 import { withSSRAuth } from "../utils/withSSRAuth";
 
 export default function Dashboard() {
-    const {user } = useContext(AuthContext);
+    const { user, signOut } = useContext(AuthContext);
 
     useEffect(() => {
         api.get('/me')
@@ -20,7 +20,11 @@ export default function Dashboard() {
     return (
         <>
             <h1>Dashboard</h1>
+
+            <button onClick={signOut}> SignOut </button>
+
             <p>{user?.email}</p>
+
             <Can permissions={['metrics.list']}>
                 <div> Métricas </div>
             </Can>
