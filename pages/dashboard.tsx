@@ -1,6 +1,8 @@
 import { destroyCookie, parseCookies } from "nookies";
 import { useContext, useEffect } from "react";
+import { Can } from "../component/Can";
 import { AuthContext } from "../contexts/AuthContext";
+import { useCan } from "../hooks/useCan";
 import { setupAPIClient } from "../services/api";
 import { api } from "../services/apiClient";
 import { AuthTokenError } from "../services/errors/AuthTokenError";
@@ -17,8 +19,11 @@ export default function Dashboard() {
 
     return (
         <>
-        <h1>Dashboard</h1>
-        <p>{user?.email}</p>
+            <h1>Dashboard</h1>
+            <p>{user?.email}</p>
+            <Can permissions={['metrics.list']}>
+                <div> Métricas </div>
+            </Can>
         </>
     );
 }

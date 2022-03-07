@@ -5,7 +5,7 @@ import { api } from "../services/apiClient";
 
 type User = {
     email: string;
-    permissions: string;
+    permissions: string[];
     roles: string[];
 }
 
